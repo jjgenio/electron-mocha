@@ -1,6 +1,6 @@
 'use strict'
 
-const assert = require('assert')
+import assert from 'assert';
 
 describe('localStorage', () => {
   it('can be accessed', () => {

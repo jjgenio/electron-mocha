@@ -1,6 +1,10 @@
-require('electron-window').parseArgs()
+import electronWindow from 'electron-window';
+import { ipcRenderer as ipc } from 'electron';
+import { Mocha, helpers } from '../lib/mocha.js';
+import electronWindow from 'electron-window';
 
-const { ipcRenderer: ipc } = require('electron')
+electronWindow.parseArgs()
+
 const opts = window.__args__
 
 if (opts.preload) {
@@ -19,8 +23,6 @@ const fail = error => {
 }
 
 try {
-  const { Mocha, helpers } = require('../lib/mocha')
-
   const handleScripts = (scripts = []) => {
     for (const script of scripts) {
       const tag = document.createElement('script')

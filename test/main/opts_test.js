@@ -1,6 +1,6 @@
 'use strict'
 
-const assert = require('assert')
+import assert from 'assert';
 
 describe('mocha.opts', () => {
   it('--require modules are loaded', () => {

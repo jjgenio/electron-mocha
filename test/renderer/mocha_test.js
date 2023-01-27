@@ -1,7 +1,7 @@
 'use strict'
 
-const assert = require('assert')
-const mocha = require('mocha')
+import assert from 'assert';
+import mocha from 'mocha';
 
 describe('mocha', () => {
   it('is exposed as global', () => {

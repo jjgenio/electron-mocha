@@ -1,7 +1,7 @@
 'use strict'
 
-const assert = require('assert')
-const { ipcRenderer } = require('electron')
+import assert from 'assert';
+import { ipcRenderer } from 'electron';
 
 describe('mocha.opts', () => {
   it('--require modules are loaded in renderer', () => {

@@ -1,4 +1,4 @@
-const { ipcRenderer: ipc } = require('electron')
+import { ipcRenderer as ipc }  from 'electron';
 
 const { hasOwnProperty } = Object.prototype
 

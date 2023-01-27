@@ -1,6 +1,6 @@
 'use strict'
 
-const assert = require('assert')
+import assert from 'assert';
 
 describe('electron-mocha', () => {
   it('runs in main process by default', () => {

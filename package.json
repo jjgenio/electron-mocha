@@ -3,12 +3,13 @@
   "version": "11.0.2",
   "description": "Mocha tests in Electron.",
   "main": "lib/main.js",
+  "type": "module",
   "scripts": {
     "pretest": "standard",
     "test": "npm run test:main && npm run test:renderer",
-    "test:main": "node bin/electron-mocha test/main",
-    "test:renderer": "node bin/electron-mocha --config .mocharc.renderer.json test/renderer",
-    "mocha": "node bin/electron-mocha",
+    "test:main": "node bin/electron-mocha.js test/main",
+    "test:renderer": "node bin/electron-mocha.js --config .mocharc.renderer.json test/renderer",
+    "mocha": "node bin/electron-mocha.js",
     "prepublishOnly": "npm test"
   },
   "mocha": {
@@ -21,7 +22,7 @@
     ]
   },
   "bin": {
-    "electron-mocha": "./bin/electron-mocha"
+    "electron-mocha": "./bin/electron-mocha.js"
   },
   "engines": {
     "node": ">= 7.0.0"

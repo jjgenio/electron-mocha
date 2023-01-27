@@ -1,29 +1,27 @@
 #!/usr/bin/env node
-
-'use strict'
-
-const { join } = require('path')
-const { spawn } = require('child_process')
+import { dirname } from 'path';
+import { spawn } from 'child_process';
+/* import { sync } from 'which'; */
 
 const electron =
   process.env.ELECTRON_PATH ||
   resolve('electron') ||
   resolve('electron-prebuilt') ||
-  resolve('electron', require('which').sync)
+  resolve('electron'/* , sync */);
+  
+  if (!electron) {
+    console.error('')
+    console.error('  Can not find `electron` in $PATH and $ELECTRON_PATH is not set.')
+    console.error('  Please either set $ELECTRON_PATH or `npm install electron`.')
+    console.error('')
+    process.exit(1)
+  }
+  
+  run(electron);
 
-if (!electron) {
-  console.error('')
-  console.error('  Can not find `electron` in $PATH and $ELECTRON_PATH is not set.')
-  console.error('  Please either set $ELECTRON_PATH or `npm install electron`.')
-  console.error('')
-  process.exit(1)
-}
-
-run(electron)
-
-function resolve (module, resolver) {
+async function resolve (module, resolver) {
   try {
-    return (resolver || require)(module)
+    return await (resolver || require)(module)
   } catch (_) {
     // ignore
   }
@@ -31,7 +29,7 @@ function resolve (module, resolver) {
 
 function run (electron) {
   let args = [
-    join(__dirname, '../lib/main.js'),
+    dirname('../lib/main.js'),
     ...process.argv.slice(2)
   ]
 
